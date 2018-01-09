@@ -30,7 +30,9 @@
 *.exe
 *.out
 *.app
+bezier
 
 # Documentation
 html
 latex
+

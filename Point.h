@@ -27,6 +27,14 @@ class Point{
 		int _y; /*coordonnée sur l'axe des ordonnées*/
 
 	public:
+
+		/**
+		 * \brief Constructeur par défaut
+		 * \param x Coordonnée en abscisse
+		 * \param y Coordonnée en ordonnée 
+		 **/
+		Point();
+
 		/**
 		 * \brief Constructeur
 		 * \param x Coordonnée en abscisse
@@ -69,7 +77,27 @@ class Point{
 };
 
 /**
- * \fn operator<<std::ostream & st, const Point & p)
+ * \fn bool operator==(Point const & p1, Point const & p2)
+ * \brief Surcharge de l'opérateur == pour tester l'égalité de deux points
+ * \param p1 Point
+ * \param p2 Point
+ * \return true si les points ont les mêmes coordonnées
+ * 	false sinon
+ **/
+bool operator==(Point const & p1, Point const & p2);
+
+/**
+ * \fn bool operator!=(Point const & p1, Point const & p2)
+ * \brief Surcharge de l'opérateur != pour tester la différence entre deux points
+ * \param p1 Point
+ * \param p2 Point
+ * \return true si les points ont des coordonnées différentes
+ * 	false sinon
+ **/
+bool operator!=(Point const & p1, Point const & p2);
+
+/**
+ * \fn std::ostream & operator<<std::ostream & st, const Point & p)
  * \brief Surcharge de l'opérateur << pour l'affichage
  * \param st Flux dans lequel on veut afficher le point
  * \param p Le point qu'on veut afficher
@@ -77,5 +105,14 @@ class Point{
  **/
 std::ostream & operator<<(std::ostream & st, const Point & p);
 
+/**
+ * \fn Point barycentre(double t, Point const & p1, Point const & p2)
+ * \brief Calcul du barycentre de deux points
+ * \param t Le paramètre du barycentre
+ * \param p1 Point 
+ * \param p2 Point
+ * \return Le barycentre de paramètre t des points p1 et p2
+ **/
+Point barycentre(double t, Point const & p1, Point const & p2);
 
 #endif

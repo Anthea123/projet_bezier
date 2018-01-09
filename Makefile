@@ -6,11 +6,16 @@ all: bezier
 Point.o: Point.cpp Point.h
 	${CC} ${CFLAGS} -c Point.cpp
 
-main.o: main.cpp Point.h
+Bezier.o: Bezier.cpp Bezier.h Point.h
+	${CC} ${CFLAGS} -c Bezier.cpp
+
+main.o: main.cpp Point.h Bezier.h
 	${CC} ${CFLAGS} -c main.cpp
 
-bezier: Point.o main.o
+bezier: Bezier.o Point.o main.o
 	${CC} ${CFLAGS} $^ -o $@
 
 doc: Doxyfile
 	doxygen Doxyfile
+clean:
+	rm *.o

@@ -7,6 +7,11 @@
 
 #include "Point.h"
 
+Point::Point(){
+	_x = 0;
+	_y = 0;
+}
+
 Point::Point(int x, int y){
 	
 	if(x < 0 || x > 100 || y < 0 || y > 100){
@@ -38,8 +43,24 @@ void Point::set_y(int new_y){
 	_y  = new_y;
 }
 
+bool operator==(Point const & p1, Point const & p2){
+	return (p1.get_x() == p2.get_x() && p1.get_y() == p2.get_y());
+}
+
+bool operator!=(Point const & p1, Point const & p2){
+	return !(p1 == p2);
+}
+
 std::ostream & operator<<(std::ostream & st, const Point & p){
-	st << "(" << p.get_x() << ", " << p.get_y() << ")";
+	//st << "(" << p.get_x() << ", " << p.get_y() << ")";
+	st <<  p.get_x() << ", " << p.get_y();
 	
 	return st;
+}
+
+Point barycentre(double t, Point const & p1, Point const & p2){
+	int x = p1.get_x() * (1-t) + p2.get_x() * t;
+    int y = p1.get_y() * (1-t) + p2.get_y() * t;
+
+    return Point(x, y);
 }
