@@ -85,6 +85,14 @@ Bezier::Bezier(Point P1, Point P2): Bezier(P1, barycentre(0.5, P1, P2), P2){
 	
 }
 
+Bezier::Bezier(Point P1, Point P2, std::vector<Point> vp){
+	_P1 = Point(P1);
+	_C = Point(barycentre(0.5, P1, P2));
+	_P2 = Point(P2);
+
+	points = std::vector<Point>(vp);
+}
+
 Bezier::Bezier(const Bezier & b){
 	_P1 = b.get_P1();
 	_C = b.get_C();
@@ -122,4 +130,17 @@ std::ostream & operator<<(std::ostream & st, const Bezier & b){
 	}
 
 	return st;
+}
+
+Bezier join(Bezier const & b1, Bezier const & b2){
+
+	std::vector<Point> p = b1.get_points();
+	for(int i = 0; i < b2.get_points().size(); i = i+1){
+		p.push_back(b1.get_points()[i]);
+	}
+	
+
+	Bezier res(b1.get_P1(), b2.get_P2(), p);
+
+	return res;
 }

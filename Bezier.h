@@ -45,6 +45,14 @@ class Bezier{
 		 **/
 		Bezier(Point P1, Point P2);
 
+		/**
+		 * \brief Constructeur de base
+		 * \param P1 Le premier point de la courbe
+		 * \param P2 Le dernier point de la courbe
+		 * \param vp Les points de la courbe
+		 **/
+		Bezier(Point P1, Point P2, std::vector<Point> vp);
+
 
 		/**
 		 * \brief Constructeur de copie
@@ -76,7 +84,6 @@ class Bezier{
 		 * \return Un vecteur contenant les points de la courbe
 		 **/
 		std::vector<Point> get_points() const;
-
 		
 };
 
@@ -96,5 +103,14 @@ std::ostream & operator<<(std::ostream & st, const Bezier & b);
  * \return Un Vector contenant les points de la courbe calculée
  **/
 std::vector<Point> casteljau(std::vector<Point> vp);
+
+/**
+ * \fn Bezier join(Bezier const & b1, Bezier const & b2)
+ * \brief Concaténer deux courbes de Bézier
+ * \param b1 Une courbe de Bézier
+ * \param b2 Une autre courbe de Bézier
+ * \return Une courbe de bézier contenant les points des deux courbes
+ **/
+Bezier join(Bezier const & b1, Bezier const & b2);
 
 #endif
