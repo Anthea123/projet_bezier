@@ -124,9 +124,8 @@ std::vector<Point> Bezier::get_points() const{
 std::ostream & operator<<(std::ostream & st, const Bezier & b){
 	//st << " -- ";
 
-	for(std::vector<Point>::iterator it = b.get_points().begin(); it != b.get_points().end(); ++it){
-		//st << *it << " -- ";
-		st << *it << std::endl;
+	for(int i = 0; i < b.get_points().size(); i = i+1){
+		st << b.get_points()[i] << std::endl;
 	}
 
 	return st;
@@ -136,7 +135,7 @@ Bezier join(Bezier const & b1, Bezier const & b2){
 
 	std::vector<Point> p = b1.get_points();
 	for(int i = 0; i < b2.get_points().size(); i = i+1){
-		p.push_back(b1.get_points()[i]);
+		p.push_back(b2.get_points()[i]);
 	}
 	
 

@@ -1,4 +1,5 @@
 #include "Bezier.h"
+#include "Lettre.h"
 
 
 int main(){
@@ -6,21 +7,15 @@ int main(){
 
 	std::cout << " " << std::endl;
 
-	Point P1(75,17);
-	Point C(56,34);
-	Point P2(36,77);
+	Bezier b1 = Bezier(Point(98,2), Point(2, 46));
+	Bezier b2 = Bezier(Point(0, 0), Point(100, 100));
 
-	Point P12(76,16);
-	Point C2(56,35);
-	Point P22(32,77);
 
-	Bezier b(P1, C, P2);
+	Bezier contour = join(b1, b2); 
 
-	Bezier b2(P12, C2, P22);
+	Lettre A("A", contour);
 
-	Bezier b3 = join(b, b2);
-
-	std::cout << b3 << std::endl;
+	std::cout << A << std::endl;
 
 	return 0;
 }

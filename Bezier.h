@@ -30,6 +30,21 @@ class Bezier{
 		std::vector<Point> points; /*vecteur contenant les points de la courbe*/
 
 	public:
+
+		/**
+		 * \brief Constructeur de base
+		 * \param P1 Le premier point de la courbe
+		 * \param C Point de contrôle
+		 * \param P2 Le dernier point de la courbe
+		 **/
+		Bezier(){
+			_P1 = Point();
+			_C = Point();
+			_P2 = Point();
+
+			points = std::vector<Point>();
+		}
+
 		/**
 		 * \brief Constructeur de base
 		 * \param P1 Le premier point de la courbe
