@@ -14,7 +14,7 @@ Point::Point(){
 
 Point::Point(int x, int y){
 	
-	if(x < 0 || x > 100 || y < 0 || y > 100){
+	if(x < 0 || x > 50 || y < 0 || y > 50){
 		throw "Mauvaises coordonnées";
 	}
 

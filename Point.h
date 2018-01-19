@@ -14,7 +14,7 @@
  * \class Point
  * \brief Classe représentant des points dans un plan
  * 
- * On considère que les points sont répartis dans une grille de taille $100 \times 100$,
+ * On considère que les points sont répartis dans une grille de taille $50 \times 50$,
  * et cette classe permet de définir des points sur cette grille avec leurs coordonnées x
  * et y.
  * 

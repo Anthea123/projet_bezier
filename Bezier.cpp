@@ -42,7 +42,7 @@ std::vector<Point> casteljau(std::vector<Point> vp){
 	std::vector<Point> res;
 	//res.push_back(vp[0]);
 
-	for(double t = 0; t < 1; t = t+0.02){
+	for(double t = 0; t < 1; t = t+0.1){ //t+0.02
 		std::vector<Point> tmp1 = vp;
 
 		while(tmp1.size() > 1){

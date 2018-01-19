@@ -14,18 +14,28 @@
 
 
 /**
+ * \enum Type
+ * \brief Type de lettre
+ **/
+enum Type{
+	Plain, /*lettre normale, sans contour rouge ni remplissage*/
+	//Filled, /*lettre avec remplissage*/
+	Outline, /*lettre avec contour rouge*/
+};
+
+/**
  * \class Lettre
  * \brief Classe représentant les lettres
  * Classe pour définir des lettres
  * On construit des lettres en utilisant des points de courbes de Bézier pour leur contour.
- * Chaque lettre est formée par un tableau de points de taille 100*100.
+ * Chaque lettre est formée par un tableau de points de taille 50*50.
  **/
 class Lettre{
 	
 	private:
 		
 		std::string _nom; /*Nom de la lettre*/
-		//static const std::string type;
+		Type _type; /*Type de lettre*/
 		Bezier _courbes; /*Objet Bezier contenant les courbes qui forment la lettre*/
 		int ** _points; /*Tableau d'entiers qui valent 1 si le point appartient à une des courbes et 0 sinon*/
 
@@ -34,9 +44,10 @@ class Lettre{
 		/**
 		 * \brief Constructeur de base
 		 * \param nom Le nom de la lettre
+		 * \param type Le type de lettre
 		 * \param courbes Les courbes qui définissent le contour de la lettre
 		 **/
-		Lettre(std::string nom, const Bezier & courbes);
+		Lettre(std::string nom, Type type, const Bezier & courbes);
 
 		/**
 		 * \brief Constructeur de copie
@@ -60,7 +71,19 @@ class Lettre{
 		 * \brief Acceseur pour les points de la lettre
 		 * \param points le tableau où stocker les points de la lettre
 		 **/
-		void get_points(int points[100][100]) const;
+		void get_points(int points[50][50]) const;
+
+		/**
+		 * \brief Destructeur de la classe Lettre
+		 * \param points le tableau où stocker les points de la lettre
+		 **/
+		~Lettre(){
+			for(int i = 0; i < 50; i = i+1){
+				delete _points[i];
+			}
+
+			delete[] _points;
+		}
 
 };
 
@@ -68,10 +91,25 @@ class Lettre{
  * \fn operator<<std::ostream & st, const Lettre & l)
  * \brief Surcharge de l'opérateur << pour l'affichage
  * \param st Flux dans lequel on veut afficher les points de la lettre
- * \param b La courbe dont on veut afficher les points
+ * \param l La lettre qu'on veut afficher
  * \return Un flux qui contient les points à afficher
  **/
 std::ostream & operator<<(std::ostream & st, const Lettre & l);
+
+
+/*void fill_table(int ** tab, int size);
+
+void remplissage(int ** tab, int x, int y, int size);*/
+
+/**
+ * \fn void outline(int ** tab, int size, int c, int k)
+ * \brief Fonction pour calculer le contour autour de la lettre
+ * \param tab Tableau de 0, 1 et 2
+ * \param size Taille du tableau
+ * \param c Le numéro qui représente le bord de la lettre
+ * \param k Le numéro qui représente le contour
+ **/
+void outline(int ** tab, int size, int c, int k);
 
 
 
