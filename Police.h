@@ -32,6 +32,8 @@ class Police{
 
 		std::vector<Lettre> get_lettres() const;
 
+		void dessiner();
+
 };
 
 Lettre A(Type t);

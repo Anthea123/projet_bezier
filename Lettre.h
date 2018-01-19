@@ -10,6 +10,9 @@
 
 #include <iostream>
 #include <vector>
+#include <png.h>
+#include <stdio.h> 
+#include <stdlib.h> 
 #include "Bezier.h"
 
 
@@ -85,6 +88,8 @@ class Lettre{
 			delete[] _points;
 		}
 
+		void dessiner(const char * nom_fichier);
+
 };
 
 /**
@@ -111,8 +116,7 @@ void remplissage(int ** tab, int x, int y, int size);*/
  **/
 void outline(int ** tab, int size, int c, int k);
 
-
-
+void setPixel(png_byte *ptr, int val);
 
 
 

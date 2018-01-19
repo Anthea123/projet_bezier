@@ -85,3 +85,23 @@ std::ostream & operator<<(std::ostream & st, const Police & p){
 
 	return st;
 }
+
+void Police::dessiner(){
+	for(int i = 0; i < _lettres.size(); i = i+1){
+		std::string tmp = _lettres[i].get_nom();
+		
+		if(_type == Plain){
+			tmp = tmp+"_plain";
+		}
+		
+		if(_type == Outline){
+			tmp = tmp+"_outline";
+		}
+
+		tmp = tmp+".png";
+
+		const char * nom_fichier = tmp.c_str();
+
+		_lettres[i].dessiner(nom_fichier);
+	}	
+}
