@@ -1,8 +1,8 @@
-#Projet sur les courbes de Bézer
+# Projet sur les courbes de Bézer
 
 Anthea Mérida et Amina Zhegida
 
-##Fichiers inclus:
+## Fichiers inclus:
 - Police.h
 - Police.cpp
 - Lettre.h
@@ -15,7 +15,7 @@ Anthea Mérida et Amina Zhegida
 - Makefile
 - Doxyfile
 
-##Instructions pour la compilation
+## Instructions pour la compilation
 
 Pour compiler l'exécutable: `make all`
 
