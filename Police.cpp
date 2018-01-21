@@ -7,6 +7,7 @@
 
 #include "Police.h"
 
+/*fonction pour créer une lettre A de type t*/
 Lettre A(Type t){
 	Bezier b1 = Bezier(Point(5, 5), Point(8*2.5, 18*2.5));
 	Bezier b2 = Bezier(Point(8*2.5, 18*2.5), Point(12*2.5, 18*2.5));
@@ -37,6 +38,7 @@ Lettre A(Type t){
 	return A;
 }
 
+/*fonction pour créer une lettre C de type t*/
 Lettre C(Type t){
 	Bezier b1 = Bezier(Point(40, 35), Point(40, 43));
 	Bezier b2 = Bezier(Point(40, 43), Point(22, 46), Point(17, 35));
@@ -65,6 +67,7 @@ Lettre C(Type t){
 	return C;
 }
 
+/*Constructeur*/
 Police::Police(Type t){
 	_type = t;
 	_lettres = std::vector<Lettre>();
@@ -73,10 +76,12 @@ Police::Police(Type t){
 	_lettres.push_back(C(t));
 }
 
+/*Accesseur*/
 std::vector<Lettre> Police::get_lettres() const{
 	return _lettres;
 }
 
+/*opérateur de flux*/
 std::ostream & operator<<(std::ostream & st, const Police & p){
 	for(int i = 0; i < p.get_lettres().size(); i = i+1){
 		st << p.get_lettres()[i].get_nom() << std::endl;
@@ -86,6 +91,7 @@ std::ostream & operator<<(std::ostream & st, const Police & p){
 	return st;
 }
 
+/*fonction qui appelle la méthode dessiner de chache lettre*/
 void Police::dessiner(){
 	for(int i = 0; i < _lettres.size(); i = i+1){
 		std::string tmp = _lettres[i].get_nom();

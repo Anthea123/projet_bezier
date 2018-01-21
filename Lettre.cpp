@@ -1,12 +1,14 @@
 /**
  * \file Lettre.cpp
  * \brief Impémentation de la classe Lettre
- * \author Anthea, Amina
+ * \author Anthea Mérida, Amina Zhegida
  * \date 17/01/2018
  **/
 
 #include "Lettre.h"
 
+
+/*Constructeurs*/
 Lettre::Lettre(std::string nom, Type type, const Bezier & courbes){
 	_nom = std::string(nom);
 	_type = type;
@@ -52,6 +54,7 @@ Lettre::Lettre(const Lettre & l) : Lettre(l._nom, l._type,l._courbes) {
 
 }
 
+/*Accesseurs*/
 std::string Lettre::get_nom() const{
 	return _nom;
 }
@@ -69,6 +72,7 @@ void Lettre::get_points(int points[50][50]) const{
 	}
 }
 
+/*opérateur de flux*/
 std::ostream & operator<<(std::ostream & st, const Lettre & l){
 
 	int points[50][50];
@@ -95,49 +99,8 @@ std::ostream & operator<<(std::ostream & st, const Lettre & l){
 	return st;
 }
 
-/*void fill_table(int ** tab, int size){
-	int i = 1;
-	int j = 1;
-
-	bool test = false;
-
-	while(i < size && test == false){
-		while(j < size-1 && test == false){
-			if(tab[i][j-1] == 1 && tab[i][j] == 0){
-
-				remplissage(tab, 6, 6, size);
-				std::cout << "feeetyjrkt"<< std::endl;
-				test = true;
-			}
-
-			j = j+1;
-		}
-		j = 0;
-		i = i+1;
-	}
-}*/
-
-/*void remplissage(int ** tab, int x, int y, int size){
-	if(tab[x][y] == 0){
-		tab[x][y] = 1;
-		if(x-1 >= 0){
-			remplissage(tab, x-1, y, size);
-		}
-		if(y-1 >= 0)
-		{
-			remplissage(tab, x, y-1, size);
-		}
-		if(x+1 < size)
-		{
-			remplissage(tab, x+1, y, size);
-		}
-		if(y+1 < size)
-		{
-			remplissage(tab, x, y+1, size);
-		}
-	}
-}*/
-
+/*fonction ajoutant un contour de valeur k autour des 
+points de valeur c*/
 void outline(int ** tab, int size, int c, int k){
 	for(int i = 1; i < size-1; i = i+1){
 		for(int j = 1; j < size-1; j = j+1){
@@ -150,6 +113,8 @@ void outline(int ** tab, int size, int c, int k){
 	}
 }
 
+/*fonction qui gère l'écriture d'un fichier .png contenant
+les informations contenues dans _points*/
 void Lettre::dessiner(const char * nom_fichier){
 	
 	png_structp png_ptr = NULL;
@@ -218,6 +183,8 @@ void Lettre::dessiner(const char * nom_fichier){
 
 }
 
+/*fonction qui détermine la couleur des pixels selon la valeur
+de val*/
 void setPixel(png_byte *ptr, int val){
 
 	if(val != 0 && val != 1 && val != 2 && val != 3){

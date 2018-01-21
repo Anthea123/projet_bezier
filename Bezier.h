@@ -4,7 +4,7 @@
 /**
  * \file Bezier.h
  * \brief Définition de la classe Bezier
- * \author Anthea, Amina
+ * \author Anthea Mérida, Amina Zhegida
  * \date 08/01/2018
  **/
 

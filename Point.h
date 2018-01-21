@@ -4,7 +4,7 @@
 /**
  * \file Point.h
  * \brief Définition de la classe Point
- * \author Anthea, Amina
+ * \author Anthea Mérida, Amina Zhegida
  * \date 06/01/2018
  **/
 
@@ -59,20 +59,6 @@ class Point{
 		 * \return La coordonnée en ordonnée
 		 **/
 		int get_y() const;
-
-		/**
-		 * \brief Setter pour la coordonée en abscisse
-		 * \param new_x La nouvelle coordonée
-		 **/
-		void set_x(int new_x);
-		
-		/**
-		 * \brief Setter pour la coordonée en ordonnée
-		 * \param new_y La nouvelle coordonée
-		 **/
-		void set_y(int new_y);
-
-
 
 };
 

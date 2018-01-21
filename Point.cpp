@@ -1,12 +1,13 @@
 /**
  * \file Point.cpp
  * \brief Impémentation de la classe Point
- * \author Anthea, Amina
+ * \author Anthea Mérida, Amina Zhegida
  * \date 06/01/2018
  **/
 
 #include "Point.h"
 
+/*Constructeurs*/
 Point::Point(){
 	_x = 0;
 	_y = 0;
@@ -27,6 +28,8 @@ Point::Point(const Point & p){
 	_y = p.get_y();
 }
 
+
+/*Accesseurs des membres*/
 int Point::get_x() const{
 	return _x;
 }
@@ -35,14 +38,8 @@ int Point::get_y() const{
 	return _y;
 }
 
-void Point::set_x(int new_x){
-	_x  = new_x;
-}
 
-void Point::set_y(int new_y){
-	_y  = new_y;
-}
-
+/*Opérateurs de comparaison*/
 bool operator==(Point const & p1, Point const & p2){
 	return (p1.get_x() == p2.get_x() && p1.get_y() == p2.get_y());
 }
@@ -51,6 +48,7 @@ bool operator!=(Point const & p1, Point const & p2){
 	return !(p1 == p2);
 }
 
+/*Opérateur de flux*/
 std::ostream & operator<<(std::ostream & st, const Point & p){
 	//st << "(" << p.get_x() << ", " << p.get_y() << ")";
 	st <<  p.get_x() << ", " << p.get_y();
@@ -58,6 +56,7 @@ std::ostream & operator<<(std::ostream & st, const Point & p){
 	return st;
 }
 
+/*Calcul d'un barycentre de paramètre t entre 0 et 1*/
 Point barycentre(double t, Point const & p1, Point const & p2){
 	int x = p1.get_x() * (1-t) + p2.get_x() * t;
     int y = p1.get_y() * (1-t) + p2.get_y() * t;

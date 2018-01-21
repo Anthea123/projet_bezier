@@ -1,47 +1,20 @@
 /**
  * \file Bezier.cpp
  * \brief Impémentation de la classe Bezier
- * \author Anthea, Amina
+ * \author Anthea Mérida, Amina Zhegida
  * \date 08/01/2018
  **/
 
 #include "Bezier.h"
 
-
+/*implémentation de l'algorithme de Casteljau*/
 std::vector<Point> casteljau(std::vector<Point> vp){
-	/*bool test_egalite = true;
 	
-	for(int i = 0; i < vp.size()-1; i = i+1){
-		if(vp[i] != vp[i+1]){
-			test_egalite = false;
-		}
-	}
-
-	if(test_egalite){
-		return vp;
-	}
-	else{
-		std::vector<Point> res = vp;
-		std::vector<Point> tmp1 = vp;
-		
-		while(tmp1.size() > 1){
-			std::vector<Point> tmp2;
-			
-			for(int i = 0; i < vp.size()-1; i = i+1){
-				tmp2[i] = barycentre(tmp1[i], tmp1[i+1]);	
-			}
-			
-			tmp1 = tmp2;
-		}
-
-		res.push_back(tmp1[0]);
-
-		return res;
-	}
-	*/
 	std::vector<Point> res;
-	//res.push_back(vp[0]);
 
+	/*le paramètre t représente le pas avec lequel on va calculer 
+	des barycentres entres les points de la courbe, plus il
+	est proche de 0, mieux la courbe est définie*/
 	for(double t = 0; t < 1; t = t+0.05){ //t+0.02
 		std::vector<Point> tmp1 = vp;
 
@@ -67,6 +40,7 @@ std::vector<Point> casteljau(std::vector<Point> vp){
 	return res;
 }
 
+/*Constructeurs*/
 Bezier::Bezier(Point P1, Point C, Point P2){
 	_P1 = Point(P1);
 	_C = Point(C);
@@ -100,11 +74,7 @@ Bezier::Bezier(const Bezier & b){
 	points = b.get_points();
 }
 
-
-/*Bezier::~Bezier(){
-	points.~vector();
-}*/
-
+/*Accesseurs*/
 Point Bezier::get_P1() const{
 	return _P1;
 }
@@ -121,6 +91,7 @@ std::vector<Point> Bezier::get_points() const{
 	return points;
 }
 
+/*Opérateur de flux*/
 std::ostream & operator<<(std::ostream & st, const Bezier & b){
 	//st << " -- ";
 
@@ -131,6 +102,7 @@ std::ostream & operator<<(std::ostream & st, const Bezier & b){
 	return st;
 }
 
+/*fonction pour concaténer les vectors de deux courbes de Bézier*/
 Bezier join(Bezier const & b1, Bezier const & b2){
 
 	std::vector<Point> p = b1.get_points();

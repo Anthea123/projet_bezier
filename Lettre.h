@@ -78,7 +78,6 @@ class Lettre{
 
 		/**
 		 * \brief Destructeur de la classe Lettre
-		 * \param points le tableau où stocker les points de la lettre
 		 **/
 		~Lettre(){
 			for(int i = 0; i < 50; i = i+1){
@@ -101,11 +100,6 @@ class Lettre{
  **/
 std::ostream & operator<<(std::ostream & st, const Lettre & l);
 
-
-/*void fill_table(int ** tab, int size);
-
-void remplissage(int ** tab, int x, int y, int size);*/
-
 /**
  * \fn void outline(int ** tab, int size, int c, int k)
  * \brief Fonction pour calculer le contour autour de la lettre
@@ -116,6 +110,12 @@ void remplissage(int ** tab, int x, int y, int size);*/
  **/
 void outline(int ** tab, int size, int c, int k);
 
+/**
+ * \fn void setPixel(png_byte *ptr, int val)
+ * \brief Fonction qui permet d'écrire un pixel selon la valeur passée en paramètre
+ * \param ptr Le pointeur du pixel où l'on veut écrire
+ * \param val La valeur dont va dépendre l'écriture du pixel
+ **/
 void setPixel(png_byte *ptr, int val);
 
 

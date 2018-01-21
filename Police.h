@@ -23,21 +23,45 @@ class Police{
 
 	private:
 
-		Type _type;
-		std::vector<Lettre> _lettres;
+		Type _type;/*type de lettre*/
+
+		std::vector<Lettre> _lettres; /*lettres de la police*/
 
 	public:
 
+		/**
+		 * \brief Constructeur
+		 * \param t le type de lettre dans la police
+		 **/		
 		Police(Type t = Plain);
 
+		/**
+		 * \brief Accesseur pour les lettres
+		 * \return un vecteur contenant les lettres
+		 **/
 		std::vector<Lettre> get_lettres() const;
 
+		/**
+		 * \brief fonction pour créer les images png des lettres
+		 **/
 		void dessiner();
 
 };
 
+/**
+ * \fn Lettre A(Type t)
+ * \brief Fonction pour définir le contour de la lettre A
+ * \param t Le type de lettre A qu'on veut obtenir
+ * \return Une instance de lettre avec le contour de la lettre A
+ **/
 Lettre A(Type t);
 
+/**
+ * \fn Lettre C(Type t)
+ * \brief Fonction pour définir le contour de la lettre C
+ * \param t Le type de lettre C qu'on veut obtenir
+ * \return Une instance de lettre avec le contour de la lettre C
+ **/
 Lettre C(Type t);
 
 /**
